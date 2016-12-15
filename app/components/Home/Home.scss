@@ -2,7 +2,7 @@
     width: 50%;
     margin: 0 auto;
     padding: 1em;
-    
+
 	.wrapper {
 		display: flex;
 		flex-wrap: wrap;
@@ -10,4 +10,7 @@
 	.chip {
 		margin: 4;
 	}
+    .response {
+        text-align: center;
+    }
 }

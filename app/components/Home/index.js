@@ -4,17 +4,17 @@ import TextField from 'material-ui/TextField';
 import Chip from 'material-ui/Chip';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-
+import WordShuffler from 'indecis/WordShuffler';
 import './Home.scss';
 
 class Home extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			question: "",
+			question: "Est-ce bien utile ?",
 			currentPossibility: "",
-			possibilities: [{label: "test", "key": 1}],
-            response: ""
+			possibilities: [{label: "Mais ouiii", "key": 1}],
+            response: {}
 		};
 	}
 
@@ -69,7 +69,14 @@ class Home extends React.Component {
     takeDecision() {
         let randNum = Math.floor( Math.random() * this.state.possibilities.length );
         let response = this.state.possibilities[randNum];
-        this.setState({"response": response});
+
+        // this.setState({"response": response});
+        new WordShuffler(document.getElementById('homeshuffletext'), response.label, {
+          textColor : '#000000',
+          timeOffset : 18,
+          mixCapital : true,
+          mixSpecialCharacters : true
+        });
     }
 
 	renderChip(data) {
@@ -113,9 +120,9 @@ class Home extends React.Component {
                     primary={true} 
                     disabled={!this.canTakeTheDecision()}
                     onClick={this.takeDecision.bind(this)} />
-
+                <br />
                 <div className="response-wrapper">
-                    <div className="response">{this.state.response.label}</div>
+                    <h1 id="homeshuffletext" className="response">{this.state.response.label}</h1>
                 </div>
             </Paper>
 		)

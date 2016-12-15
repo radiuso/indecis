@@ -1,4 +1,4 @@
-export const WordShuffler = function(holder,opt) {
+export default function WordShuffler(holder, text, opt){
   var that = this;
   var time = 0;
   this.now;
@@ -34,7 +34,7 @@ export const WordShuffler = function(holder,opt) {
   }
 
   if(typeof opt != "undefined"){
-    for(key in opt){
+    for(var key in opt){
       options[key] = opt[key];
     }
   }
@@ -196,41 +196,6 @@ export const WordShuffler = function(holder,opt) {
     requestAnimationFrame(update);
   }
 
-  this.writeWord(this.holder.innerHTML);
-
-
-  console.log(this.currentWord);
+  this.writeWord(text);
   update(time);
 }
-
-
-
-
-var headline = document.getElementById('headline');
-var text = document.getElementById('text');
-var shuffler = document.getElementById('shuffler');
-
-var headText = new WordShuffler(headline,{
-  textColor : '#fff',
-  timeOffset : 18,
-  mixCapital : true,
-  mixSpecialCharacters : true
-});
-
-var pText = new WordShuffler(text,{
-  textColor : '#fff',
-  timeOffset : 2
-});
-
-var buttonText = new WordShuffler(shuffler,{
-  textColor : 'tomato',
-  timeOffset : 10
-});
-
-
-
-  shuffler.addEventListener('click',function () {
-    headText.restart();
-    pText.restart();
-    buttonText.restart();
-  });
