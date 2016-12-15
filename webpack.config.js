@@ -29,6 +29,10 @@ var config = {
     {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('css!sass')
+    },
+    {
+      test: /\.(otf|eot|svg|ttf|woff)/,
+      loader: 'url-loader?limit=8192'
     }]
   },
 
@@ -46,7 +50,7 @@ var config = {
 if (process.env.NODE_ENV === 'production') {
   config.devtool = false;
   config.plugins = [
-    new ExtractTextPlugin('/app.css', { allChunks: true }),
+    new ExtractTextPlugin('public/app.css', { allChunks: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({comments: false}),
     new webpack.DefinePlugin({
