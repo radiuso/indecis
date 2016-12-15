@@ -12,8 +12,11 @@ import './App.scss';
 
 const App = () => (
   <MuiThemeProvider>
-	<div>
-		<h1 className="title">Indecis!</h1>
+	<div className="main">
+		<div className="header">
+			<h1 className="title">Indecis!</h1>
+			<img className="wise" src="assets/images/wise.png" alt="image d'un sage"/>
+		</div>
 		<Home />
     </div>
   </MuiThemeProvider>
